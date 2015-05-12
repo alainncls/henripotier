@@ -1,0 +1,57 @@
+
+<div class="section section-white">
+  <div class="container">
+    <div class="row">
+
+      <div class="section-title">
+        <h1>Your cart contains:</h1>
+      </div>
+
+      <ul class="grid cs-style-3">
+        <div ng-repeat="item in b" class="col-md-4 col-sm-6">
+          <figure>
+            <img src="{{item.cover}}" alt="Cover">
+            <figcaption>
+              <h3>{{item.title}}</h3>
+              <span>Price: {{item.price}}€</span>
+            </figcaption>
+          </figure>
+        </div>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+
+      <div class="section-title">
+        <h1>Available offers:</h1>
+      </div>
+
+      <div class="col-lg-12">
+        <!-- Pricing Plans Wrapper -->
+        <div class="pricing-wrapper">
+
+          <!-- Pricing Plan -->
+          <div ng-repeat="offer in offers" class="pricing-plan">
+            <h2 class="pricing-plan-title">{{offer.type}}</h2>
+            <div class="pricing-plan-price">{{offer.value}}</div>
+            <!-- Pricing Plan Features -->
+            <ul class="pricing-plan-features">
+              <li><strong>Maximum</strong> security</li>
+              <li><strong>1 day</strong> delivery</li>
+              <li><strong>Huge</strong> wrapping</li>
+            </ul>
+            <a href="index.html" class="btn">Pay {{offer.total}}€</a>
+          </div>
+          <!-- End Pricing Plan -->
+        </div>
+        <!-- End Pricing Plans Wrapper -->
+      </div>
+    </div>
+  </div>
+</div>
+
