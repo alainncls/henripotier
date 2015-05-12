@@ -1,26 +1,20 @@
 'use strict';
 
 angular.module('bibliothequeApp')
-  .controller('CartCtrl', function ($scope, cartService) {
-    $scope.offers = [
-      {
-        'type': 'percentage',
-        'value': 5,
-        'total': 100
-      },
-      {
-        'type': 'minus',
-        'value': 15,
-        'total': 100
-      },
-      {
-        'type': 'slice',
-        'sliceValue': 100,
-        'value': 12,
-        'total': 100
-      }
-    ];
+  .controller('CartCtrl', function ($scope, $http, cartService) {
+    $scope.cart = cartService.getCart();
 
-    $scope.cart=cartService.getCart();
+    var isbnList = function () {
+      var list = [];
+      angular.forEach($scope.cart, function (book) {
+        this.push(book.isbn);
+      }, list);
+      return list.join(',');
+    }
 
+    $http.get('http://henri-potier.xebia.fr/books/' + isbnList() + '/commercialOffers').success(function (data) {
+      $scope.offers = data.offers;
+      console.log('http://henri-potier.xebia.fr/books/' + isbnList() + '/commercialOffers');
+      console.log(data);
+    });
   });
