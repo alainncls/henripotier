@@ -1,20 +1,16 @@
-var cartService = angular.module('cartService', ['ngResource']);
-
-cartService.service('cartService', ['$rootScope', function ($rootScope) {
-
-
-  function init () {
-    $cart = {
-      books: []
+angular.module('bibliothequeApp')
+  .service('cartService', ['$rootScope', function ($rootScope) {
+    this.init = function () {
+      this.$cart = {
+        books: []
+      };
     };
 
-    addBook("111", "Coucou", "12");
-  };
+    this.addBook = function (book) {
+      this.$cart.books.push(book);
+    };
 
-  function addBook (isbn, name, price) {
-    var newBook = {"isbn": isbn, "name": name, "price": price};
-    this.$cart.books.push(newBook);
-  };
-
-
-}]);
+    this.getCart = function () {
+      return this.$cart.books;
+    };
+  }]);

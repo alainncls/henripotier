@@ -22,4 +22,9 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+
+  .run(['cartService', function (cartService) {
+    cartService.init();
+  }])
+;
