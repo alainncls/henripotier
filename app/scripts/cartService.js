@@ -14,7 +14,7 @@ angular.module('bibliothequeApp')
         }
       });
       return book;
-    }
+    };
 
     this.addBook = function (book) {
       if (this.getBookByIsbn(book.isbn) != null) {
