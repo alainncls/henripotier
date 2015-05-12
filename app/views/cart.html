@@ -37,14 +37,19 @@
           <!-- Pricing Plan -->
           <div ng-repeat="offer in offers" class="pricing-plan">
             <h2 class="pricing-plan-title">{{offer.type}}</h2>
-            <div class="pricing-plan-price">{{offer.value}}</div>
+
+            <div ng-if="offer.type == 'percentage'" class="pricing-plan-price">-{{offer.value}}%</div>
+            <div ng-if="offer.type == 'minus'" class="pricing-plan-price">-{{offer.value}}€</div>
+            <div ng-if="offer.type == 'slice'" class="pricing-plan-price">-{{offer.value}}€</div>
+
             <!-- Pricing Plan Features -->
             <ul class="pricing-plan-features">
-              <li><strong>Maximum</strong> security</li>
+              <li ng-if="offer.type == 'slice'">Every <strong>{{offer.sliceValue}}€</strong> spent</li>
+              <li ng-if="offer.type != 'slice'"><strong>Maximum</strong> security</li>
               <li><strong>1 day</strong> delivery</li>
               <li><strong>Huge</strong> wrapping</li>
             </ul>
-            <!--<a href="index.html" class="btn">Pay {{offer.total}}€</a>-->
+            <a href="index.html" class="btn">Total: {{getTotalOffer(offer)}}€</a>
           </div>
           <!-- End Pricing Plan -->
         </div>
