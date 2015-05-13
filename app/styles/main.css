@@ -1,0 +1,21 @@
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  background: transparent!important;
+  color: #ed4e6e;
+}
+
+.cs-style-3 figcaption span {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}

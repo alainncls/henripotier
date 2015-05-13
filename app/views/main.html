@@ -5,6 +5,11 @@
 </div>
 
 <div class="section section-white">
+
+  <div class="section-title">
+    <h1>Our commitments</h1>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-sm-6">
@@ -40,14 +45,13 @@
         <h1>Henri Potier series</h1>
       </div>
 
-      <ul class="grid cs-style-3">
+      <ul class="row cs-style-3 row-eq-height">
         <div ng-repeat="book in books" class="col-md-4 col-sm-6">
           <figure>
-            <img src="{{book.cover}}" alt="Cover">
+            <img src="{{book.cover}}" alt="Cover" width="100%">
             <figcaption>
-              <h3>{{book.title}}</h3>
               <span>Price: {{book.price}}€</span>
-              <a ng-click="addToCart(book)"><i class="icon-shopping-cart"></i> Add to cart</a>
+              <a class=" btn btn-xs" ng-click="addToCart(book)"><i class="icon-shopping-cart"></i> Add to cart</a>
             </figcaption>
           </figure>
         </div>
