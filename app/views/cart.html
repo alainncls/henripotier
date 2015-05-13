@@ -6,14 +6,11 @@
         <h1>Your cart contains:</h1>
       </div>
 
-      <ul class="grid cs-style-3">
+      <ul class="row cs-style-3 row-eq-height">
         <div ng-repeat="book in cart" class="col-md-4 col-sm-6">
           <figure>
-            <img src="{{book.cover}}" alt="Cover">
-            <figcaption>
-              <h3>{{book.title}}</h3>
-              <span>Price: {{book.price}}€</span>
-            </figcaption>
+            <img src="{{book.cover}}" alt="Cover" width="100%">
+            <span>Price: {{book.price}}€</span>
           </figure>
         </div>
       </ul>
