@@ -6,11 +6,15 @@
         <h1>Your cart contains:</h1>
       </div>
 
+
       <ul class="row cs-style-3 row-eq-height">
         <div ng-repeat="book in cart" class="col-md-4 col-sm-6">
           <figure>
             <img src="{{book.cover}}" alt="Cover" width="100%">
             <span>Price: {{book.price}}€</span>
+            <figcaption>
+              <div class=" btn btn-xs btn-danger pull-right" ng-click="deleteFromCart(book)"><i class="icon-trash"></i></div>
+            </figcaption>
           </figure>
         </div>
       </ul>

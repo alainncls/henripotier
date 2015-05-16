@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bibliothequeApp')
-  .controller('MainCtrl', function ($scope, $http, cartService) {
+  .controller('MainCtrl', function ($rootScope, $scope, $http, cartService) {
     $scope.books = [];
 
     $http.get('http://henri-potier.xebia.fr/books').success( function (data) {
@@ -17,7 +17,9 @@ angular.module('bibliothequeApp')
     }
 
     $scope.addToCart = function (book){
-      console.log(book);
-      cartService.addBook(book)
+      cartService.addBook(book);
+      $rootScope.$broadcast('changeCart');
     }
+
+
   });

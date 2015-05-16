@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bibliothequeApp')
-  .controller('CartCtrl', function ($scope, $http, cartService) {
+  .controller('CartCtrl', function ($rootScope, $scope, $http, cartService) {
     $scope.cart = cartService.getCart();
 
     var isbnList = function () {
@@ -40,13 +40,25 @@ angular.module('bibliothequeApp')
       }
     };
 
-    $scope.isBestOffer = function(offer){
+    $scope.deleteFromCart = function (book) {
+      cartService.removeBook(book);
+      $http.get('http://henri-potier.xebia.fr/books/' + isbnList() + '/commercialOffers').success(function (data) {
+        $scope.offers = data.offers;
+        angular.forEach($scope.offers, getTotalOffer);
+        console.log('Reload offers');
+      }).error(function (e) {
+        $scope.offers = []
+      });
+      $rootScope.$broadcast('changeCart');
+    };
+
+    $scope.isBestOffer = function (offer) {
       var bool = true;
-      angular.forEach($scope.offers, function(of){
-        if(offer.total > of.total) {
+      angular.forEach($scope.offers, function (of) {
+        if (offer.total > of.total) {
           bool = false;
         }
       });
       return bool;
-    }
+    };
   });

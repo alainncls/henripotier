@@ -16,6 +16,16 @@ angular.module('bibliothequeApp')
       return book;
     };
 
+    this.getBook = function (isbn) {
+      var book = null;
+      angular.forEach(this.$cart.books, function (item) {
+        if (item.isbn === isbn) {
+          book = item;
+        }
+      });
+      return book;
+    };
+
     this.addBook = function (book) {
       if (this.getBookByIsbn(book.isbn) != null) {
       }
@@ -24,7 +34,16 @@ angular.module('bibliothequeApp')
       }
     };
 
+    this.removeBook = function (book) {
+      this.$cart.books.splice(book, 1);
+    };
+
     this.getCart = function () {
       return this.$cart.books;
+    };
+
+    this.getCartSize = function () {
+      console.log(this.$cart.books.length);
+      return this.$cart.books.length;
     };
   }]);
