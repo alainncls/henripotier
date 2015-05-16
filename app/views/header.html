@@ -11,9 +11,9 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
 
-        <li ng-class="{ active: isActive('/')}"><a ng-href="#/"><i class="fa fa-home"></i> Home</a></li>
-        <li ng-class="{ active: isActive('/cart')}"><a ng-href="#/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-        <li ng-class="{ active: isActive('/terms')}"><a ng-href="#/terms"><span class="fa fa-book"></span> Terms</a></li>
+        <li ng-class="{ active: isActive('/')}"><a ng-href="#/"><i class="icon-home"></i> Home</a></li>
+        <li ng-class="{ active: isActive('/cart')}"><a ng-href="#/cart"><i class="icon-shopping-cart"></i> Cart <span class="badge">{{getCartSize}}</span></a></li>
+        <li ng-class="{ active: isActive('/terms')}"><a ng-href="#/terms"><span class="icon-book"></span> Terms</a></li>
       </ul>
     </div>
   </div>
