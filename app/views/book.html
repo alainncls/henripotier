@@ -1,0 +1,26 @@
+<div class="section section-white">
+  <div class="container">
+    <div class="row">
+
+      <div class="section-title">
+        <h1>{{book.title}}</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <img src="{{book.cover}}" alt="Cover">
+        </div>
+        <div class="col-lg-4">
+          <figcaption><strong>ISBN</strong>: {{book.isbn}}<br/><strong>Price</strong>: {{book.price}}€</figcaption>
+        </div>
+        <div class="col-lg-4">
+          <a class="btn btn-lg btn-green" ng-click="addToCart(book)"><i class="icon-shopping-cart"></i>Add to cart</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+

@@ -1,25 +1,27 @@
 'use strict';
 
 angular.module('bibliothequeApp')
-  .controller('MainCtrl', function ($rootScope, $scope, $http, cartService) {
+  .controller('MainCtrl', function ($rootScope, $scope, $http, $location, cartService) {
     $scope.books = [];
 
-    $http.get('http://henri-potier.xebia.fr/books').success( function (data) {
+    $http.get('http://henri-potier.xebia.fr/books').success(function (data) {
       $scope.books = data;
     });
 
-    function findBookByIsbn(isbn){
-      angular.forEach(books, function(index, value){
-        if (value.isbn == isbn){
-          return value;
-        }
-      })
-    }
+    //function findBookByIsbn(isbn) {
+    //  angular.forEach($scope.books, function (index, book) {
+    //    if (book.isbn === isbn) {
+    //      return book;
+    //    }
+    //  });
+    //}
 
-    $scope.addToCart = function (book){
+    $scope.addToCart = function (book) {
       cartService.addBook(book);
       $rootScope.$broadcast('changeCart');
-    }
+    };
 
-
+    $scope.goTo = function (isbn) {
+      $location.path('/book/' + isbn);
+    };
   });
