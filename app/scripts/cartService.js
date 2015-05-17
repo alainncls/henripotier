@@ -1,5 +1,7 @@
+'use strict';
+
 angular.module('bibliothequeApp')
-  .service('cartService', ['$rootScope', function ($rootScope) {
+  .service('cartService', [function () {
     this.init = function () {
       this.$cart = {
         books: []
@@ -27,7 +29,7 @@ angular.module('bibliothequeApp')
     };
 
     this.addBook = function (book) {
-      if (this.getBookByIsbn(book.isbn) != null) {
+      if (this.getBookByIsbn(book.isbn) !== null) {
       }
       else {
         this.$cart.books.push(book);

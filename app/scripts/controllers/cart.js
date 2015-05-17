@@ -17,7 +17,7 @@ angular.module('bibliothequeApp')
       angular.forEach($scope.offers, getTotalOffer);
     });
 
-    var getTotalCart = function (cart) {
+    var getTotalCart = function () {
       var totalCart = 0;
 
       angular.forEach($scope.cart, function (book) {
@@ -46,8 +46,8 @@ angular.module('bibliothequeApp')
         $scope.offers = data.offers;
         angular.forEach($scope.offers, getTotalOffer);
         console.log('Reload offers');
-      }).error(function (e) {
-        $scope.offers = []
+      }).error(function () {
+        $scope.offers = [];
       });
       $rootScope.$broadcast('changeCart');
     };

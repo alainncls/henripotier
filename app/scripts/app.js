@@ -19,6 +19,10 @@ angular
         templateUrl: 'views/terms.html',
         controller: 'MainCtrl'
       })
+      .when('/book/:isbn', {
+        templateUrl: 'views/book.html',
+        controller: 'BookCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
