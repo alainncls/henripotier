@@ -7,17 +7,23 @@
       </div>
 
 
-      <ul class="row cs-style-3 row-eq-height">
+      <div class="row cs-style-3 row-eq-height">
         <div ng-repeat="book in cart" class="col-md-4 col-sm-6">
           <figure>
-            <img src="{{book.cover}}" alt="Cover" width="100%">
+            <img ng-click="goTo(book.isbn)" src="{{book.cover}}" alt="Cover" width="100%">
             <span>Price: {{book.price}}€</span>
             <figcaption>
-              <div class=" btn btn-xs btn-danger pull-right" ng-click="deleteFromCart(book)"><i class="icon-trash"></i></div>
+              <span>Quantity: {{book.quantity}}</span>
+              <div class="btn btn-xs btn-danger pull-right" ng-click="decrQtity(book)" data-toggle="tooltip"
+                   data-placement="bottom" title="Remove one of these books"><i class="icon-minus-sign"></i></div>
+              <div class="btn btn-xs btn-danger pull-right" ng-click="incrQtity(book)" data-toggle="tooltip"
+                   data-placement="bottom" title="Add same book"><i class="icon-plus-sign"></i></div>
+              <div class="btn btn-xs btn-danger pull-right" ng-click="deleteFromCart(book)" data-toggle="tooltip"
+                   data-placement="bottom" title="Remove from cart"><i class="icon-trash"></i></div>
             </figcaption>
           </figure>
         </div>
-      </ul>
+      </div>
 
     </div>
   </div>
@@ -36,12 +42,23 @@
         <div class="pricing-wrapper">
 
           <!-- Pricing Plan -->
-          <div ng-repeat="offer in offers" ng-init="offer.best=isBestOffer(offer)" class="pricing-plan" ng-class="{'pricing-plan-promote':offer.best}">
-            <h2 ng-class="{'pricing-plan-promote-title':offer.best, 'pricing-plan-title': !offer.best}">{{offer.type}}</h2>
+          <div ng-repeat="offer in offers" class="pricing-plan"
+               ng-class="{'pricing-plan-promote':offer.best}">
+            <h2 ng-class="{'pricing-plan-promote-title':offer.best, 'pricing-plan-title': !offer.best}">
+              {{offer.type}}</h2>
 
-            <div ng-if="offer.type == 'percentage'" ng-class="{'pricing-plan-promote-price':offer.best, 'pricing-plan-price': !offer.best}">-{{offer.value}}%</div>
-            <div ng-if="offer.type == 'minus'" ng-class="{'pricing-plan-promote-price':offer.best, 'pricing-plan-price': !offer.best}">-{{offer.value}}€</div>
-            <div ng-if="offer.type == 'slice'" ng-class="{'pricing-plan-promote-price':offer.best, 'pricing-plan-price': !offer.best}">-{{offer.value}}€</div>
+            <div ng-if="offer.type == 'percentage'"
+                 ng-class="{'pricing-plan-promote-price':offer.best, 'pricing-plan-price': !offer.best}">
+              -{{offer.value}}%
+            </div>
+            <div ng-if="offer.type == 'minus'"
+                 ng-class="{'pricing-plan-promote-price':offer.best, 'pricing-plan-price': !offer.best}">
+              -{{offer.value}}€
+            </div>
+            <div ng-if="offer.type == 'slice'"
+                 ng-class="{'pricing-plan-promote-price':offer.best, 'pricing-plan-price': !offer.best}">
+              -{{offer.value}}€
+            </div>
 
             <!-- Pricing Plan Features -->
             <ul ng-class="{'pricing-plan-promote-features':offer.best, 'pricing-plan-features': !offer.best}">

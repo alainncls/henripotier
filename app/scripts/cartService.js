@@ -10,19 +10,9 @@ angular.module('bibliothequeApp')
 
     this.getBookByIsbn = function (isbn) {
       var book = null;
-      angular.forEach(this.$cart.books, function (item) {
-        if (item.isbn === isbn) {
-          book = item;
-        }
-      });
-      return book;
-    };
-
-    this.getBook = function (isbn) {
-      var book = null;
-      angular.forEach(this.$cart.books, function (item) {
-        if (item.isbn === isbn) {
-          book = item;
+      angular.forEach(this.$cart.books, function (b) {
+        if (b.isbn === isbn) {
+          book = b;
         }
       });
       return book;
@@ -30,8 +20,10 @@ angular.module('bibliothequeApp')
 
     this.addBook = function (book) {
       if (this.getBookByIsbn(book.isbn) !== null) {
+        book.quantity ++;
       }
       else {
+        book.quantity = 1;
         this.$cart.books.push(book);
       }
     };
@@ -40,12 +32,23 @@ angular.module('bibliothequeApp')
       this.$cart.books.splice(book, 1);
     };
 
+    this.incrBook = function (book) {
+      this.getBookByIsbn(book.isbn).quantity ++;
+    };
+
+    this.decrBook = function (book) {
+      this.getBookByIsbn(book.isbn).quantity --;
+    };
+
     this.getCart = function () {
       return this.$cart.books;
     };
 
     this.getCartSize = function () {
-      console.log(this.$cart.books.length);
-      return this.$cart.books.length;
+      var qtity = 0;
+      angular.forEach(this.$cart.books, function (b) {
+        qtity += b.quantity;
+      });
+      return qtity;
     };
   }]);

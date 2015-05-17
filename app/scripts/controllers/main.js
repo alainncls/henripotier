@@ -8,14 +8,6 @@ angular.module('bibliothequeApp')
       $scope.books = data;
     });
 
-    //function findBookByIsbn(isbn) {
-    //  angular.forEach($scope.books, function (index, book) {
-    //    if (book.isbn === isbn) {
-    //      return book;
-    //    }
-    //  });
-    //}
-
     $scope.addToCart = function (book) {
       cartService.addBook(book);
       $rootScope.$broadcast('changeCart');
