@@ -19,3 +19,7 @@ figcaption {
   bottom: 0;
   right: 20px;
 }
+
+figure > img {
+  cursor: pointer;
+}

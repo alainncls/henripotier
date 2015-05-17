@@ -45,7 +45,7 @@
         <h1>Henri Potier series</h1>
       </div>
 
-      <ul class="row cs-style-3 row-eq-height">
+      <div class="row cs-style-3 row-eq-height">
         <div ng-repeat="book in books" class="col-md-4 col-sm-6">
           <figure>
             <img src="{{book.cover}}" ng-click="goTo(book.isbn)" alt="Cover" width="100%">
@@ -55,7 +55,7 @@
             </figcaption>
           </figure>
         </div>
-      </ul>
+      </div>
 
     </div>
   </div>
