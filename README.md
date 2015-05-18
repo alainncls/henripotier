@@ -1,8 +1,11 @@
 # Xébia exercise - Front (AngularJS)
 ## Henri Potier
 
-## Build & development
-Run `grunt build` for building and `grunt serve` for preview.
+## How to build & run
+ - Run `npm install`
+ - Run `bower install`
+ - Run `grunt serve`
+ - Go to localhost:9000
 
 ## Content
 - Template: [BASICA](http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/)
