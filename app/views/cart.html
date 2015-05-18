@@ -6,6 +6,7 @@
         <h1>Your cart contains:</h1>
       </div>
 
+      <div ng-if="cart.length == 0">Nothing at the moment !</div>
 
       <div class="row cs-style-3 row-eq-height">
         <div ng-repeat="book in cart" class="col-md-4 col-sm-6">
@@ -36,6 +37,8 @@
       <div class="section-title">
         <h1>Available offers:</h1>
       </div>
+
+      <div ng-if="offers.length == 0">None available...</div>
 
       <div class="col-lg-12">
         <!-- Pricing Plans Wrapper -->
