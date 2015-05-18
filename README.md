@@ -2,7 +2,7 @@
 ## Henri Potier
 
 ## Build & development
-Run `grunt` for building and `grunt serve` for preview.
+Run `grunt build` for building and `grunt serve` for preview.
 
 ## Content
 - Template: [BASICA](http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/)
