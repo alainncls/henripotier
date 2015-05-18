@@ -82,7 +82,7 @@ angular.module('bibliothequeApp')
       var bool = true;
       offer.best = false;
       angular.forEach($scope.offers, function (of) {
-        if (offer.total > of.total) {
+        if (parseFloat(offer.total) > parseFloat(of.total)) {
           bool = false;
         }
       });
