@@ -3,6 +3,7 @@
 angular.module('bibliothequeApp')
   .controller('CartCtrl', function ($rootScope, $scope, $location, $http, cartService) {
     $scope.cart = cartService.getCart();
+    $scope.offers = [];
 
     var isbnList = function () {
       var list = [];
