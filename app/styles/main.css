@@ -23,3 +23,7 @@ figcaption {
 figure > img {
   cursor: pointer;
 }
+
+img.cover{
+  width: 100%;
+}
