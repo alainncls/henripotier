@@ -1,7 +1,7 @@
 # Xébia exercise - Front (AngularJS)
 ## Henri Potier
 
-## How to build & run
+## How to run
  - Run `npm install`
  - Run `bower install`
  - Run `grunt serve`
