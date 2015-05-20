@@ -20,7 +20,7 @@ angular.module('bibliothequeApp')
 
     this.addBook = function (book) {
       if (this.getBookByIsbn(book.isbn) !== null) {
-        book.quantity ++;
+        book.quantity++;
       }
       else {
         book.quantity = 1;
@@ -33,11 +33,11 @@ angular.module('bibliothequeApp')
     };
 
     this.incrBook = function (book) {
-      this.getBookByIsbn(book.isbn).quantity ++;
+      this.getBookByIsbn(book.isbn).quantity++;
     };
 
     this.decrBook = function (book) {
-      this.getBookByIsbn(book.isbn).quantity --;
+      this.getBookByIsbn(book.isbn).quantity--;
     };
 
     this.getCart = function () {
