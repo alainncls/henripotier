@@ -6,6 +6,9 @@
  - Run `bower install`
  - Run `grunt serve`
  - Go to localhost:9000
+ 
+ ## Tests
+ *Not available at the moment*
 
 ## Content
 - Template: [BASICA](http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/)
