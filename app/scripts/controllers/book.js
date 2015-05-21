@@ -7,16 +7,18 @@ angular.module('bibliothequeApp')
 
     $http.get('http://henri-potier.xebia.fr/books').success(function (data) {
       $scope.books = data;
-      findRequestedBook($routeParams.isbn);
+      $scope.findRequestedBook($routeParams.isbn);
     });
 
-    function findRequestedBook(isbn) {
+    $scope.findRequestedBook = function (isbn) {
       angular.forEach($scope.books, function (book) {
         if (book.isbn === isbn) {
           $scope.book = book;
+          return book;
         }
+        return 'error';
       });
-    }
+    };
 
     $scope.addToCart = function (book) {
       cartService.addBook(book);
