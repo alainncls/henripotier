@@ -46,6 +46,7 @@ describe('MainCtrl', function () {
         'price': 35,
         'cover': "http://henri-potier.xebia.fr/hp0.jpg"
       });
+
       expect(cartService.getCartSize()).toEqual(1);
     });
   });
