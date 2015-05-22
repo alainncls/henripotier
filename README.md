@@ -6,9 +6,12 @@
  - Run `bower install`
  - Run `grunt serve`
  - Go to localhost:9000
- 
- ## Tests
- *Not available at the moment*
+
+## Tests
+ - Run `npm install`
+ - Run `bower install`
+ - Run `grunt test`
+ *Basic tests at the moment, awaiting for complex function testing...*
 
 ## Content
 - Template: [BASICA](http://www.vactualart.com/portfolio-item/basica-a-free-html5-template/)
