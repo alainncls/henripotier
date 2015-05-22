@@ -42,26 +42,27 @@ describe('BookCtrl', function () {
 
   describe('$scope.findRequestedBook', function () {
     it('should find a book by isbn', function () {
-      cartService.addBook({
+      var book1 = {
         'isbn': "c8fabf68-8374-48fe-a7ea-a00ccd07afff",
         'title': "Henri Potier à l'école des sorciers",
         'price': 35,
         'cover': "http://henri-potier.xebia.fr/hp0.jpg"
-      });
+      };
 
-      cartService.addBook({
+      var book2 = {
         "isbn": "a460afed-e5e7-4e39-a39d-c885c05db861",
         "title": "Henri Potier et la Chambre des secrets",
         "price": 30,
         "cover": "http://henri-potier.xebia.fr/hp1.jpg"
-      });
+      };
 
-      expect($scope.findRequestedBook('c8fabf68-8374-48fe-a7ea-a00ccd07afff')).toEqual({
-        'isbn': "c8fabf68-8374-48fe-a7ea-a00ccd07afff",
-        'title': "Henri Potier à l'école des sorciers",
-        'price': 35,
-        'cover': "http://henri-potier.xebia.fr/hp0.jpg"
-      });
+      $scope.books.push(book1);
+      $scope.books.push(book2);
+
+      var isbn = 'c8fabf68-8374-48fe-a7ea-a00ccd07afff';
+      $scope.findRequestedBook(isbn);
+
+      expect($scope.book).toEqual(book1);
     });
   });
 
