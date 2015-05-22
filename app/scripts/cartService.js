@@ -18,13 +18,14 @@ angular.module('bibliothequeApp')
       return book;
     };
 
-    this.addBook = function (book) {
-      if (this.getBookByIsbn(book.isbn) !== null) {
+    this.addBook = function (b) {
+      var book = this.getBookByIsbn(b.isbn);
+      if (book !== null) {
         book.quantity++;
       }
       else {
-        book.quantity = 1;
-        this.$cart.books.push(book);
+        b.quantity = 1;
+        this.$cart.books.push(b);
       }
     };
 
