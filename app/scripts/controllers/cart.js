@@ -5,7 +5,7 @@ angular.module('bibliothequeApp')
     $scope.cart = cartService.getCart();
     $scope.offers = [];
 
-    var isbnList = function () {
+    $scope.isbnList = function () {
       var list = [];
       angular.forEach($scope.cart, function (book) {
         this.push(book.isbn);
@@ -13,12 +13,12 @@ angular.module('bibliothequeApp')
       return list.join(',');
     };
 
-    $http.get('http://henri-potier.xebia.fr/books/' + isbnList() + '/commercialOffers').success(function (data) {
+    $http.get('http://henri-potier.xebia.fr/books/' + $scope.isbnList() + '/commercialOffers').success(function (data) {
       $scope.offers = data.offers;
-      calculateOffers();
+      $scope.calculateOffers();
     });
 
-    var getTotalCart = function () {
+    $scope.getTotalCart = function () {
       var totalCart = 0;
 
       angular.forEach($scope.cart, function (book) {
@@ -27,22 +27,22 @@ angular.module('bibliothequeApp')
       return totalCart;
     };
 
-    var getTotalOffer = function (offer) {
+    $scope.getTotalOffer = function (offer) {
       if (offer.type === 'percentage') {
-        offer.total = (getTotalCart($scope.cart) * (1 - offer.value / 100)).toFixed(2);
+        offer.total = ($scope.getTotalCart($scope.cart) * (1 - offer.value / 100)).toFixed(2);
       }
       else if (offer.type === 'minus') {
-        offer.total = (getTotalCart($scope.cart) - offer.value).toFixed(2);
+        offer.total = ($scope.getTotalCart($scope.cart) - offer.value).toFixed(2);
       }
       else if (offer.type === 'slice') {
-        var slices = Math.floor(getTotalCart($scope.cart) / offer.sliceValue);
-        offer.total = (getTotalCart($scope.cart) - offer.value * slices).toFixed(2);
+        var slices = Math.floor($scope.getTotalCart($scope.cart) / offer.sliceValue);
+        offer.total = ($scope.getTotalCart($scope.cart) - offer.value * slices).toFixed(2);
       }
     };
 
-    var calculateOffers = function () {
+    $scope.calculateOffers = function () {
       angular.forEach($scope.offers, function (offer) {
-        getTotalOffer(offer);
+        $scope.getTotalOffer(offer);
       });
       angular.forEach($scope.offers, function (offer) {
         $scope.chooseBestOffer(offer);
@@ -51,9 +51,9 @@ angular.module('bibliothequeApp')
 
     $scope.deleteFromCart = function (book) {
       cartService.removeBook(book);
-      $http.get('http://henri-potier.xebia.fr/books/' + isbnList() + '/commercialOffers').success(function (data) {
+      $http.get('http://henri-potier.xebia.fr/books/' + $scope.isbnList() + '/commercialOffers').success(function (data) {
         $scope.offers = data.offers;
-        calculateOffers();
+        $scope.calculateOffers();
       }).error(function () {
         $scope.offers = [];
       });
@@ -62,7 +62,7 @@ angular.module('bibliothequeApp')
 
     $scope.incrQtity = function (book) {
       cartService.incrBook(book);
-      calculateOffers();
+      $scope.calculateOffers();
       $rootScope.$broadcast('changeQtity');
       $rootScope.$broadcast('changeCart');
     };
@@ -73,7 +73,7 @@ angular.module('bibliothequeApp')
       }
       else {
         cartService.decrBook(book);
-        calculateOffers();
+        $scope.calculateOffers();
         $rootScope.$broadcast('changeQtity');
         $rootScope.$broadcast('changeCart');
       }
