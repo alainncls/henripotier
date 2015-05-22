@@ -14,9 +14,7 @@ angular.module('bibliothequeApp')
       angular.forEach($scope.books, function (book) {
         if (book.isbn === isbn) {
           $scope.book = book;
-          return book;
         }
-        return 'error';
       });
     };
 
