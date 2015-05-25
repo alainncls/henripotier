@@ -6,12 +6,14 @@ describe('CartCtrl', function () {
     'price': 35,
     'cover': "http://henri-potier.xebia.fr/hp0.jpg"
   };
+
   var book2 = {
     "isbn": "a460afed-e5e7-4e39-a39d-c885c05db861",
     "title": "Henri Potier et la Chambre des secrets",
     "price": 30,
     "cover": "http://henri-potier.xebia.fr/hp1.jpg"
   };
+
   var offer1 = {
     "type": "percentage",
     "value": 4,
